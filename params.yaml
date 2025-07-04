@@ -1,0 +1,10 @@
+# params value for VGG-16
+prepare_base_model:
+  AUGMENTATION: True
+  IMAGE_SIZE: [224,224,3]
+  BATCH_SIZE: 32
+  EPOCHS: 50
+  LEARNING_RATE: 0.0001
+  CLASSES: 4
+  WEIGHTS: 'imagenet'
+  INCLUDE_TOP: False

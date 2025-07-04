@@ -1,0 +1,57 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environments
+venv/
+env/
+kidney/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Logs
+logs/
+*.log
+
+# Data artifacts and outputs
+artifacts/
+!artifacts/.gitkeep
+
+# Model files
+*.h5
+*.hdf5
+*.ckpt
+*.pb
+
+# DVC cache and lock files
+.cache/
+.dvc/
+*.dvc
+*.dvc.lock
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Python egg info
+*.egg-info/
+dist/
+build/
+
+# VSCode settings
+.vscode/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Ignore research outputs except notebooks
+research/*.csv
+research/*.npy
+research/*.npz
+research/*.pkl
+research/*.h5

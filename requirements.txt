@@ -1,0 +1,22 @@
+tensorflow==2.12.0
+pandas
+numpy
+dvc
+mlflow==2.2.2
+notebook
+matplotlib
+seaborn
+python-box==6.0.2
+pyYAML
+tqdm
+ensure==1.0.2
+joblib
+types-PyYAML
+scipy
+Flask
+Flask-Cors
+gdown
+-e .
+# The line -e . in your requirements.txt file is a pip directive that tells pip to install your project in "editable" mode. The -e stands for "editable," and the . refers to the current directory, which should contain a setup.py or pyproject.toml file describing your Python package.
+
+# When you install a package in editable mode, any changes you make to the source code are immediately reflected in your Python environment without needing to reinstall the package. This is especially useful during development, as it allows you to test changes on the fly.

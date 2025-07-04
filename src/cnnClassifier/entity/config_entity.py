@@ -1,0 +1,38 @@
+#enitty : return type of file
+
+from dataclasses import dataclass
+from pathlib import Path
+
+@dataclass(frozen=True)
+class DataIngestionConfig:
+    """
+    Data Ingestion configuration.
+    """
+    root_dir: Path
+    source_url: str
+    local_data_file: Path
+    unzip_dir: Path
+
+@dataclass(frozen=True)
+class PrepareBaseModelConfig:
+    root_dir: str
+    base_model_path: str
+    updated_model_path: str
+    params_image_size: list
+    params_weights: str
+    params_learning_rate: float
+    params_include_top: bool
+    params_classes: int
+
+
+@dataclass(frozen=True)
+class TrainingConfig:
+    root_dir: Path
+    trained_model_path: Path
+    params_batch_size: int
+    params_epochs: int
+    params_image_size: list
+    params_is_augmentation: bool
+    updated_model_path: Path
+    training_data_path: Path
+    
