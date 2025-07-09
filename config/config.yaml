@@ -16,5 +16,6 @@ prepare_base_model:
 
 # train model
 train_model:
+  training_data_dir: artifacts/data_ingestion/kidney-CT_Scan/CT-KIDNEY-DATASET-Normal-Cyst-Tumor-Stone
   root_dir: artifacts/train_model
   model_path: artifacts/train_model/model.h5

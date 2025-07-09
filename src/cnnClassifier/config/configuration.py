@@ -4,6 +4,7 @@ from cnnClassifier.utils.common import read_yaml, create_directories
 from cnnClassifier.entity.config_entity import DataIngestionConfig
 from cnnClassifier.entity.config_entity import PrepareBaseModelConfig
 from cnnClassifier.entity.config_entity import TrainingConfig
+from cnnClassifier.entity.config_entity import EvaluationConfig
 
 class ConfigurationManager:
     def __init__(self, config_filepath=CONFIG_FILE_PATH, params_filepath=PARAMS_FILE_PATH):
@@ -56,3 +57,18 @@ class ConfigurationManager:
         )
 
         return training_config
+    
+    def get_evaluation_config(self) -> EvaluationConfig:
+        eval_config = EvaluationConfig(
+            path_of_model=Path(self.config.train_model.model_path),
+            training_data_path=Path(
+                os.path.join(
+                    self.config.data_ingestion.unzip_dir,
+                    "kidney-CT_Scan/CT-KIDNEY-DATASET-Normal-Cyst-Tumor-Stone"
+                )
+            ),
+            all_params=dict(self.params.prepare_base_model),
+            params_image_size=self.params.prepare_base_model.IMAGE_SIZE,
+            params_batch_size=self.params.prepare_base_model.BATCH_SIZE
+        )
+        return eval_config

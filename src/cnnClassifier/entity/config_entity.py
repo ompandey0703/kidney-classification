@@ -35,4 +35,16 @@ class TrainingConfig:
     params_is_augmentation: bool
     updated_model_path: Path
     training_data_path: Path
+
+@dataclass(frozen=True)
+class EvaluationConfig:
+    """
+    Configuration for evaluation of the model.
+    """
+    path_of_model: Path
+    training_data_path: Path
+    all_params: dict
+    params_image_size: list
+    params_batch_size: int
+    
     

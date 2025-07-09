@@ -1,5 +1,6 @@
 # params value for VGG-16
 prepare_base_model:
+  MODEL_NAME: 'vgg16'
   AUGMENTATION: True
   IMAGE_SIZE: [224,224,3]
   BATCH_SIZE: 32

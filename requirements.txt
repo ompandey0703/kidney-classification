@@ -1,4 +1,4 @@
-tensorflow==2.12.0
+tensorflow==2.18.0
 pandas
 numpy
 dvc
@@ -16,6 +16,7 @@ scipy
 Flask
 Flask-Cors
 gdown
+dagshub
 -e .
 # The line -e . in your requirements.txt file is a pip directive that tells pip to install your project in "editable" mode. The -e stands for "editable," and the . refers to the current directory, which should contain a setup.py or pyproject.toml file describing your Python package.
 
