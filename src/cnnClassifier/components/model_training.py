@@ -1,13 +1,7 @@
 import tensorflow as tf
-import os
 from pathlib import Path
-import os
-from zipfile import ZipFile
-import urllib.request as request
-import tensorflow as tf
 from cnnClassifier import logger
 from cnnClassifier.entity.config_entity import TrainingConfig
-import tensorflow as tf
 
 
 class Training:

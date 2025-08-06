@@ -8,7 +8,8 @@ STAGE_NAME = "Model Training"
 class ModelTrainingPipeline:
     """
     Pipeline for training the model.
-    This stage is responsible for training the model using the prepared base model and the training dataset.
+    This stage is responsible for training the model using the prepared
+    base model and the training dataset.
     """
 
     def __init__(self):

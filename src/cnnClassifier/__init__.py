@@ -12,6 +12,9 @@ os.makedirs(log_dir, exist_ok=True)
 logging.basicConfig(
     level=logging.INFO,
     format=logging_format,
-    handlers=[logging.FileHandler(log_file), logging.StreamHandler(sys.stdout)],
+    handlers=[
+        logging.FileHandler(log_file),
+        logging.StreamHandler(
+            sys.stdout)],
 )
 logger = logging.getLogger("cnnClassifierLogger")

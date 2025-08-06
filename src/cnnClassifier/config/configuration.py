@@ -1,5 +1,6 @@
 import os
-from cnnClassifier.constants import *
+from pathlib import Path
+from cnnClassifier.constants import CONFIG_FILE_PATH, PARAMS_FILE_PATH
 from cnnClassifier.utils.common import read_yaml, create_directories
 from cnnClassifier.entity.config_entity import DataIngestionConfig
 from cnnClassifier.entity.config_entity import PrepareBaseModelConfig
@@ -8,9 +9,8 @@ from cnnClassifier.entity.config_entity import EvaluationConfig
 
 
 class ConfigurationManager:
-    def __init__(
-        self, config_filepath=CONFIG_FILE_PATH, params_filepath=PARAMS_FILE_PATH
-    ):
+    def __init__(self, config_filepath=CONFIG_FILE_PATH,
+                 params_filepath=PARAMS_FILE_PATH):
         self.config = read_yaml(config_filepath)
         self.params = read_yaml(params_filepath)
         create_directories([self.config.artifacts_root])
@@ -44,7 +44,7 @@ class ConfigurationManager:
 
     def get_training_config(self) -> TrainingConfig:
         training = self.config.train_model
-        prepare_base_model = self.config.prepare_base_model
+        self.config.prepare_base_model
         params = self.params.prepare_base_model
         training_data_path = os.path.join(
             self.config.data_ingestion.unzip_dir,
@@ -52,13 +52,16 @@ class ConfigurationManager:
         )
 
         training_config = TrainingConfig(
-            root_dir=Path(self.config.artifacts_root),
-            trained_model_path=Path(training.model_path),
+            root_dir=Path(
+                self.config.artifacts_root),
+            trained_model_path=Path(
+                training.model_path),
             params_batch_size=params.BATCH_SIZE,
             params_epochs=params.EPOCHS,
             params_image_size=params.IMAGE_SIZE,
             params_is_augmentation=params.AUGMENTATION,
-            updated_model_path=Path(self.config.prepare_base_model.updated_model_path),
+            updated_model_path=Path(
+                self.config.prepare_base_model.updated_model_path),
             training_data_path=Path(training_data_path),
         )
 

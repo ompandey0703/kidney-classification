@@ -1,5 +1,7 @@
 from cnnClassifier.config.configuration import ConfigurationManager
-from cnnClassifier.components.model_evaluation_with_mlflow import ModelEvaluation
+from cnnClassifier.components.model_evaluation_with_mlflow import (
+    ModelEvaluation
+)
 from cnnClassifier import logger
 import mlflow
 import dagshub
@@ -39,7 +41,8 @@ class ModelEvaluationPipeline:
                     mlflow.log_metric(k, v)
 
         except Exception as e:
-            logger.exception(f"Exception occurred during model evaluation: {e}")
+            logger.exception(
+                f"Exception occurred during model evaluation: {e}")
             raise e
 
 

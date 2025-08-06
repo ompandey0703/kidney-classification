@@ -3,7 +3,8 @@ from cnnClassifier.components.data_ingestion import DataIngestion
 from cnnClassifier import logger
 
 STAGE_NAME = "Data Ingestion"
-# This script is responsible for downloading and extracting the dataset for the CNN classifier.
+# This script is responsible for downloading and extracting the dataset
+# for the CNN classifier.
 
 
 class DataIngestionPipeline:
