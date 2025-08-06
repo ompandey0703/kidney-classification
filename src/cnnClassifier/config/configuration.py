@@ -8,7 +8,9 @@ from cnnClassifier.entity.config_entity import EvaluationConfig
 
 
 class ConfigurationManager:
-    def __init__(self, config_filepath=CONFIG_FILE_PATH, params_filepath=PARAMS_FILE_PATH):
+    def __init__(
+        self, config_filepath=CONFIG_FILE_PATH, params_filepath=PARAMS_FILE_PATH
+    ):
         self.config = read_yaml(config_filepath)
         self.params = read_yaml(params_filepath)
         create_directories([self.config.artifacts_root])
@@ -20,7 +22,7 @@ class ConfigurationManager:
             root_dir=Path(config.root_dir),
             source_url=config.source_url,
             local_data_file=Path(config.local_data_file),
-            unzip_dir=Path(config.unzip_dir)
+            unzip_dir=Path(config.unzip_dir),
         )
         return data_ingestion_config
 
@@ -36,7 +38,7 @@ class ConfigurationManager:
             params_weights=params.WEIGHTS,
             params_learning_rate=params.LEARNING_RATE,
             params_include_top=params.INCLUDE_TOP,
-            params_classes=params.CLASSES
+            params_classes=params.CLASSES,
         )
         return prepare_base_model_config
 
@@ -45,7 +47,9 @@ class ConfigurationManager:
         prepare_base_model = self.config.prepare_base_model
         params = self.params.prepare_base_model
         training_data_path = os.path.join(
-            self.config.data_ingestion.unzip_dir, "kidney-CT_Scan/CT-KIDNEY-DATASET-Normal-Cyst-Tumor-Stone")
+            self.config.data_ingestion.unzip_dir,
+            "kidney-CT_Scan/CT-KIDNEY-DATASET-Normal-Cyst-Tumor-Stone",
+        )
 
         training_config = TrainingConfig(
             root_dir=Path(self.config.artifacts_root),
@@ -54,9 +58,8 @@ class ConfigurationManager:
             params_epochs=params.EPOCHS,
             params_image_size=params.IMAGE_SIZE,
             params_is_augmentation=params.AUGMENTATION,
-            updated_model_path=Path(
-                self.config.prepare_base_model.updated_model_path),
-            training_data_path=Path(training_data_path)
+            updated_model_path=Path(self.config.prepare_base_model.updated_model_path),
+            training_data_path=Path(training_data_path),
         )
 
         return training_config
@@ -67,11 +70,11 @@ class ConfigurationManager:
             training_data_path=Path(
                 os.path.join(
                     self.config.data_ingestion.unzip_dir,
-                    "kidney-CT_Scan/CT-KIDNEY-DATASET-Normal-Cyst-Tumor-Stone"
+                    "kidney-CT_Scan/CT-KIDNEY-DATASET-Normal-Cyst-Tumor-Stone",
                 )
             ),
             all_params=dict(self.params.prepare_base_model),
             params_image_size=self.params.prepare_base_model.IMAGE_SIZE,
-            params_batch_size=self.params.prepare_base_model.BATCH_SIZE
+            params_batch_size=self.params.prepare_base_model.BATCH_SIZE,
         )
         return eval_config

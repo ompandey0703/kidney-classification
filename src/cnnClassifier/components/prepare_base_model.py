@@ -22,10 +22,9 @@ class PrepareBaseModel:
         base_model = tf.keras.applications.vgg16.VGG16(
             input_shape=tuple(self.config.params_image_size),
             include_top=self.config.params_include_top,
-            weights=weights_arg
+            weights=weights_arg,
         )
-        os.makedirs(os.path.dirname(
-            self.config.base_model_path), exist_ok=True)
+        os.makedirs(os.path.dirname(self.config.base_model_path), exist_ok=True)
         base_model.save(self.config.base_model_path)
 
         return base_model
@@ -43,15 +42,15 @@ class PrepareBaseModel:
 
         x = base_model.output
         x = tf.keras.layers.Flatten()(x)
-        x = tf.keras.layers.Dense(1024, activation='relu')(x)
-        output = tf.keras.layers.Dense(classes, activation='softmax')(x)
+        x = tf.keras.layers.Dense(1024, activation="relu")(x)
+        output = tf.keras.layers.Dense(classes, activation="softmax")(x)
 
         model = tf.keras.models.Model(inputs=base_model.input, outputs=output)
 
         model.compile(
             optimizer=tf.keras.optimizers.Adam(learning_rate=learning_rate),
-            loss='categorical_crossentropy',
-            metrics=['accuracy']
+            loss="categorical_crossentropy",
+            metrics=["accuracy"],
         )
         model.summary()
         return model
@@ -62,10 +61,9 @@ class PrepareBaseModel:
             classes=self.config.params_classes,
             freeze_all=True,
             freeze_till=None,
-            learning_rate=self.config.params_learning_rate
+            learning_rate=self.config.params_learning_rate,
         )
 
-        os.makedirs(os.path.dirname(
-            self.config.updated_model_path), exist_ok=True)
+        os.makedirs(os.path.dirname(self.config.updated_model_path), exist_ok=True)
         model.save(self.config.updated_model_path)
         logger.info(f"Updated model saved at {self.config.updated_model_path}")

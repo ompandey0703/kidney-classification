@@ -9,6 +9,7 @@ class DataIngestionConfig:
     """
     Data Ingestion configuration.
     """
+
     root_dir: Path
     source_url: str
     local_data_file: Path
@@ -44,6 +45,7 @@ class EvaluationConfig:
     """
     Configuration for evaluation of the model.
     """
+
     path_of_model: Path
     training_data_path: Path
     all_params: dict

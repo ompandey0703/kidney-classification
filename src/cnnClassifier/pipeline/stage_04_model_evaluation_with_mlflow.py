@@ -19,9 +19,9 @@ class ModelEvaluationPipeline:
         try:
             # Initialize dagshub/MLflow connection
             dagshub.init(
-                repo_owner='ompandey0703',
-                repo_name='kidney-classification',
-                mlflow=True
+                repo_owner="ompandey0703",
+                repo_name="kidney-classification",
+                mlflow=True,
             )
 
             eval_config = self.config.get_evaluation_config()
@@ -39,8 +39,7 @@ class ModelEvaluationPipeline:
                     mlflow.log_metric(k, v)
 
         except Exception as e:
-            logger.exception(
-                f"Exception occurred during model evaluation: {e}")
+            logger.exception(f"Exception occurred during model evaluation: {e}")
             raise e
 
 

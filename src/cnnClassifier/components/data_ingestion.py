@@ -20,14 +20,15 @@ class DataIngestion:
             os.makedirs("artifacts/data_ingestion", exist_ok=True)
             if not os.path.exists(zip_download_dir):
                 logger.info(
-                    f"Downloading file from {self.config.source_url} to {self.config.local_data_file}")
+                    f"Downloading file from {self.config.source_url} to {self.config.local_data_file}"
+                )
 
                 prefix = "https://drive.google.com/uc?/export=download&id="
                 file_id = dataset_url.split("/")[-2]
-                gdown.download(
-                    prefix+file_id, str(zip_download_dir), quiet=False)
+                gdown.download(prefix + file_id, str(zip_download_dir), quiet=False)
                 logger.info(
-                    f"Downloaded file size: {get_size_of_file(self.config.local_data_file)} bytes")
+                    f"Downloaded file size: {get_size_of_file(self.config.local_data_file)} bytes"
+                )
             else:
                 logger.info(f"Zip file already exists")
         except Exception as e:
@@ -36,7 +37,8 @@ class DataIngestion:
 
     def extract_zip_file(self):
         logger.info(
-            f"Extracting zip file {self.config.local_data_file} to {self.config.unzip_dir}")
-        with zipfile.ZipFile(self.config.local_data_file, 'r') as zip_ref:
+            f"Extracting zip file {self.config.local_data_file} to {self.config.unzip_dir}"
+        )
+        with zipfile.ZipFile(self.config.local_data_file, "r") as zip_ref:
             zip_ref.extractall(self.config.unzip_dir)
         logger.info("Extraction completed")

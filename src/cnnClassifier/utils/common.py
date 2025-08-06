@@ -16,7 +16,7 @@ import base64
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
     """Reads a YAML file and returns i
 
-    Args: 
+    Args:
         path_to_yaml (Path): Path to the YAML file.
 
     Raises
@@ -157,7 +157,7 @@ def encodeImage(image_bytes: bytes) -> str:
         str: Base64 encoded image string.
     """
     try:
-        encoded_image = base64.b64encode(image_bytes).decode('utf-8')
+        encoded_image = base64.b64encode(image_bytes).decode("utf-8")
         logger.info("Image encoded successfully.")
         return encoded_image
     except Exception as e:

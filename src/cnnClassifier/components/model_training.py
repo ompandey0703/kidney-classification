@@ -34,7 +34,7 @@ class Training:
             seed=42,
             image_size=IMG_SIZE,
             batch_size=BATCH_SIZE,
-            label_mode="categorical"
+            label_mode="categorical",
         )
 
         val_ds = image_dataset_from_directory(
@@ -44,7 +44,7 @@ class Training:
             seed=42,
             image_size=IMG_SIZE,
             batch_size=BATCH_SIZE,
-            label_mode="categorical"
+            label_mode="categorical",
         )
 
         # Optional: prefetch for performance
@@ -76,9 +76,7 @@ class Training:
 
         # Train the model
         self.model.fit(
-            train_ds,
-            validation_data=val_ds,
-            epochs=self.config.params_epochs
+            train_ds, validation_data=val_ds, epochs=self.config.params_epochs
         )
 
         # Save the trained model

@@ -15,6 +15,7 @@ class ModelEvaluation:
 
     def get_data_generator(self):
         from tensorflow.keras.preprocessing import image_dataset_from_directory
+
         IMG_SIZE = self.config.params_image_size[:2]
         BATCH_SIZE = self.config.params_batch_size
         DATA_DIR = self.config.training_data_path
@@ -26,7 +27,7 @@ class ModelEvaluation:
             seed=42,
             image_size=IMG_SIZE,
             batch_size=BATCH_SIZE,
-            label_mode="categorical"
+            label_mode="categorical",
         )
         return val_ds
 
