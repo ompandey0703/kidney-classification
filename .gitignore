@@ -28,8 +28,8 @@ artifacts/
 
 # DVC cache and lock files
 .cache/
-
-!.dvc
+.dvc/cache/
+.dvc/tmp/
 
 # System files
 .DS_Store
