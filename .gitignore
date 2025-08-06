@@ -17,6 +17,7 @@ logs/
 
 # Data artifacts and outputs
 artifacts/
+!artifacts/**/*.dvc
 !artifacts/.gitkeep
 
 # Model files
@@ -27,9 +28,8 @@ artifacts/
 
 # DVC cache and lock files
 .cache/
-.dvc/
-*.dvc
-*.dvc.lock
+
+!.dvc
 
 # System files
 .DS_Store

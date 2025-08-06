@@ -1,1 +1,39 @@
-# Placeholder for dvc.yaml
+stages:
+  data_ingestion:
+    cmd: python src/cnnClassifier/pipeline/stage_01_data_ingestion.py
+    deps:
+      - src/cnnClassifier/pipeline/stage_01_data_ingestion.py
+      - config/config.yaml
+      - params.yaml
+    outs:
+      - artifacts/data_ingestion/kidney-CT_Scan.zip
+
+  prepare_base_model:
+    cmd: python src/cnnClassifier/pipeline/stage_02_prepare_base_model.py
+    deps:
+      - src/cnnClassifier/pipeline/stage_02_prepare_base_model.py
+      - config/config.yaml
+      - params.yaml
+    outs:
+      - artifacts/prepare_base_model/base_model.h5
+
+  train_model:
+    cmd: python src/cnnClassifier/pipeline/stage_03_training_model.py
+    deps:
+      - src/cnnClassifier/pipeline/stage_03_training_model.py
+      - artifacts/prepare_base_model/base_model.h5
+      - config/config.yaml
+      - params.yaml
+    outs:
+      - artifacts/train_model/model.h5
+
+  evaluate_model:
+    cmd: python src/cnnClassifier/pipeline/stage_04_model_evaluation_with_mlflow.py
+    deps:
+      - src/cnnClassifier/pipeline/stage_04_model_evaluation_with_mlflow.py
+      - artifacts/train_model/model.h5
+      - config/config.yaml
+      - params.yaml
+    outs:
+      - artifacts/model_evaluation/model_evaluation_report.json
+      - artifacts/model_evaluation/model_evaluation_plot.png
