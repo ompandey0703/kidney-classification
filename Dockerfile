@@ -34,8 +34,8 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
     CMD curl -f http://localhost:8080/health || exit 1
 
 # Pull DVC-tracked data and models
-RUN pip install dvc
-RUN dvc pull --force
+
+RUN dvc pull artifacts/train_model/updated_model.h5 
 
 # Run the application
 CMD ["python", "app.py"]

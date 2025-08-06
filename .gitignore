@@ -15,10 +15,13 @@ kidney/
 logs/
 *.log
 
-# Data artifacts and outputs
-artifacts/
+# Ignore all files in artifacts
+artifacts/**
+
+# But allow .dvc files and .gitkeep
 !artifacts/**/*.dvc
-!artifacts/.gitkeep
+!artifacts/**/.gitkeep
+
 
 # Model files
 *.h5

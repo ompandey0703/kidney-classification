@@ -5,6 +5,7 @@ import tensorflow as tf
 from cnnClassifier import logger
 from cnnClassifier.entity.config_entity import PrepareBaseModelConfig
 
+
 class PrepareBaseModel:
     def __init__(self, config: PrepareBaseModelConfig):
         self.config = config
@@ -23,9 +24,10 @@ class PrepareBaseModel:
             include_top=self.config.params_include_top,
             weights=weights_arg
         )
-        os.makedirs(os.path.dirname(self.config.base_model_path), exist_ok=True)
+        os.makedirs(os.path.dirname(
+            self.config.base_model_path), exist_ok=True)
         base_model.save(self.config.base_model_path)
-        
+
         return base_model
 
     def _prepare_full_model(self, classes, freeze_all, freeze_till, learning_rate):
@@ -63,6 +65,7 @@ class PrepareBaseModel:
             learning_rate=self.config.params_learning_rate
         )
 
-        os.makedirs(os.path.dirname(self.config.updated_model_path), exist_ok=True)
+        os.makedirs(os.path.dirname(
+            self.config.updated_model_path), exist_ok=True)
         model.save(self.config.updated_model_path)
         logger.info(f"Updated model saved at {self.config.updated_model_path}")

@@ -9,6 +9,7 @@ from cnnClassifier import logger
 from cnnClassifier.entity.config_entity import TrainingConfig
 import tensorflow as tf
 
+
 class Training:
     def __init__(self, config: TrainingConfig):
         self.config = config
@@ -23,7 +24,8 @@ class Training:
 
         IMG_SIZE = self.config.params_image_size[:2]
         BATCH_SIZE = self.config.params_batch_size
-        DATA_DIR = Path(self.config.training_data_path) # This should be the dataset folder path
+        # This should be the dataset folder path
+        DATA_DIR = Path(self.config.training_data_path)
 
         train_ds = image_dataset_from_directory(
             DATA_DIR,

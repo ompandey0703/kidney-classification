@@ -6,6 +6,7 @@ import dagshub
 
 STAGE_NAME = "Model Evaluation"
 
+
 class ModelEvaluationPipeline:
     """
     Pipeline for evaluating the trained model and logging metrics to MLflow.
@@ -33,13 +34,15 @@ class ModelEvaluationPipeline:
                 # Log all params from all_params dict
                 for k, v in eval_config.all_params.items():
                     mlflow.log_param(k, v)
-    
+
                 for k, v in results.items():
                     mlflow.log_metric(k, v)
 
         except Exception as e:
-            logger.exception(f"Exception occurred during model evaluation: {e}")
+            logger.exception(
+                f"Exception occurred during model evaluation: {e}")
             raise e
+
 
 if __name__ == "__main__":
     try:

@@ -1,4 +1,7 @@
 [core]
     remote = dagshub
-[remote "dagshub"]
+['remote "dagshub"']
     url = https://dagshub.com/ompandey0703/kidney-classification.dvc
+    auth = basic
+    user = ompandey0703
+    password = 7d0fda1fb02c5fbfe56ec12478d47feda593d4a3

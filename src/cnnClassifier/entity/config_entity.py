@@ -1,7 +1,8 @@
-#enitty : return type of file
+# enitty : return type of file
 
 from dataclasses import dataclass
 from pathlib import Path
+
 
 @dataclass(frozen=True)
 class DataIngestionConfig:
@@ -12,6 +13,7 @@ class DataIngestionConfig:
     source_url: str
     local_data_file: Path
     unzip_dir: Path
+
 
 @dataclass(frozen=True)
 class PrepareBaseModelConfig:
@@ -36,6 +38,7 @@ class TrainingConfig:
     updated_model_path: Path
     training_data_path: Path
 
+
 @dataclass(frozen=True)
 class EvaluationConfig:
     """
@@ -46,5 +49,3 @@ class EvaluationConfig:
     all_params: dict
     params_image_size: list
     params_batch_size: int
-    
-    

@@ -1,0 +1,26 @@
+schema: '2.0'
+stages:
+  train_model:
+    cmd: python src/cnnClassifier/pipeline/stage_03_model_training.py
+    deps:
+    - path: artifacts/prepare_base_model/base_model.h5
+      hash: md5
+      md5: 3959f1e38131b98fe060e209f01ba176
+      size: 161717776
+    - path: config/config.yaml
+      hash: md5
+      md5: b740a0d8ac7f0530a6b838d53929ab8e
+      size: 715
+    - path: params.yaml
+      hash: md5
+      md5: 51d8a90340dd97d57b27c1ad0efd1892
+      size: 224
+    - path: src/cnnClassifier/pipeline/stage_03_model_training.py
+      hash: md5
+      md5: a496bf8f6b2f053cc49683b30f2bb7d0
+      size: 1222
+    outs:
+    - path: artifacts/train_model/updated_model.h5
+      hash: md5
+      md5: 068251acf91fc16fc7a0751520f38e06
+      size: 161715984

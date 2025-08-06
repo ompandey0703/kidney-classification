@@ -18,20 +18,20 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
 
     Args: 
         path_to_yaml (Path): Path to the YAML file.
-        
+
     Raises
         ValueError: If the file does not exist or is not a YAML file.
         e: empty file
-        
+
     Returns:
     ConfigBox: A ConfigBox object containing the YAML data.
     """
     if not path_to_yaml.exists():
         raise ValueError(f"File {path_to_yaml} does not exist.")
-    
+
     if path_to_yaml.suffix != ".yaml":
         raise ValueError(f"File {path_to_yaml} is not a YAML file.")
-    
+
     with open(path_to_yaml, "r") as yaml_file:
         try:
             content = yaml.safe_load(yaml_file)
@@ -41,7 +41,7 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
         except yaml.YAMLError as e:
             logger.error(f"Error reading YAML file: {e}")
             raise e
-        
+
 
 def create_directories(path_to_directories: list) -> None:
     """
@@ -54,6 +54,7 @@ def create_directories(path_to_directories: list) -> None:
         os.makedirs(str(path), exist_ok=True)
         logger.info(f"Created directory: {path}")
 
+
 @ensure_annotations
 def save_json(path_to_json: Path, data: dict) -> None:
     """Saves a dictionary to a JSON file.
@@ -65,6 +66,7 @@ def save_json(path_to_json: Path, data: dict) -> None:
     with open(path_to_json, "w") as json_file:
         json.dump(data, json_file, indent=4)
     logger.info(f"Saved data to {path_to_json}")
+
 
 @ensure_annotations
 def load_json(path_to_json: Path) -> ConfigBox:
@@ -81,6 +83,7 @@ def load_json(path_to_json: Path) -> ConfigBox:
     logger.info(f"Loaded data from {path_to_json}")
     return ConfigBox(data)
 
+
 @ensure_annotations
 def save_bin(data: Any, path_to_bin: Path) -> None:
     """Saves data to a binary file using joblib.
@@ -91,6 +94,7 @@ def save_bin(data: Any, path_to_bin: Path) -> None:
     """
     joblib.dump(data, path_to_bin)
     logger.info(f"Saved data to {path_to_bin}")
+
 
 @ensure_annotations
 def load_bin(path_to_bin: Path) -> Any:
@@ -106,6 +110,7 @@ def load_bin(path_to_bin: Path) -> Any:
     logger.info(f"Loaded data from {path_to_bin}")
     return data
 
+
 @ensure_annotations
 def get_size_of_file(file_path: Path) -> int:
     """Returns the size of a file in bytes.
@@ -118,10 +123,11 @@ def get_size_of_file(file_path: Path) -> int:
     """
     if not file_path.exists():
         raise FileNotFoundError(f"File {file_path} does not exist.")
-    
+
     size = file_path.stat().st_size
     logger.info(f"Size of {file_path}: {size} bytes")
     return size
+
 
 def decodeImage(image_string: str) -> bytes:
     """Decodes a base64 encoded image string to bytes.
@@ -139,7 +145,8 @@ def decodeImage(image_string: str) -> bytes:
     except Exception as e:
         logger.error(f"Error decoding image: {e}")
         raise e
-    
+
+
 def encodeImage(image_bytes: bytes) -> str:
     """Encodes image bytes to a base64 string.
 
@@ -156,4 +163,3 @@ def encodeImage(image_bytes: bytes) -> str:
     except Exception as e:
         logger.error(f"Error encoding image: {e}")
         raise e
-

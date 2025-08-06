@@ -4,12 +4,14 @@ from cnnClassifier import logger
 
 STAGE_NAME = "Data Ingestion"
 # This script is responsible for downloading and extracting the dataset for the CNN classifier.
+
+
 class DataIngestionPipeline:
     def __init__(self):
         pass
 
     def main(self):
-                
+
         try:
             config_manager = ConfigurationManager()
             data_ingestion_config = config_manager.get_data_ingestion_config()
@@ -19,6 +21,7 @@ class DataIngestionPipeline:
         except Exception as e:
             logger.error(f"An error occurred during data ingestion: {e}")
             raise e
+
 
 if __name__ == "__main__":
     try:

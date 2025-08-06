@@ -2,6 +2,7 @@ import tensorflow as tf
 from cnnClassifier import logger
 from cnnClassifier.entity.config_entity import EvaluationConfig
 
+
 class ModelEvaluation:
     def __init__(self, config: EvaluationConfig):
         self.config = config

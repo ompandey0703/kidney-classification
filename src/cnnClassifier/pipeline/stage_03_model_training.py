@@ -1,9 +1,11 @@
 
 
-STAGE_NAME = "Model Training"
-from cnnClassifier.config.configuration import ConfigurationManager
-from cnnClassifier.components.model_training import Training
 from cnnClassifier import logger
+from cnnClassifier.components.model_training import Training
+from cnnClassifier.config.configuration import ConfigurationManager
+STAGE_NAME = "Model Training"
+
+
 class ModelTrainingPipeline:
     """
     Pipeline for training the model.
@@ -22,6 +24,8 @@ class ModelTrainingPipeline:
         except Exception as e:
             logger.exception(f"Exception occurred during training: {e}")
             raise e
+
+
 if __name__ == "__main__":
     try:
         logger.info(f">>>>>> {STAGE_NAME} started <<<<<<")
