@@ -19,7 +19,7 @@ class PredictionPipeline:
     def load_model(self):
         try:
             # Load the trained model
-            model_path = "artifacts/train_model/model.h5"
+            model_path = "artifacts/train_model/updated_model.h5"
             if os.path.exists(model_path):
                 self.model = tf.keras.models.load_model(model_path)
                 logger.info("Model loaded successfully")
